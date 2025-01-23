@@ -20,3 +20,7 @@
   - Quando utilizado upload de qualquer tipo de asset, o mesmo será armazenado em um Cloud Storage
   - O processo de escala se dará no aumento na quantidade de PODs do Kubernetes
   - O processo de autoscaling também será utilizado através de um recurso chamado HPA (Horizontal Pod Autoscaler)
+- Consistência eventual:
+  - Grande parte da comunicação entre os microsservições será assíncrona
+  - Cada microsserviço possuirá sua própria base de dados
+  - Eventualmente os dados poderão ficar inconsistentes, desd que não haja prejuízo direto ao negócio
