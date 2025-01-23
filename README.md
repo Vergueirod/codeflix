@@ -41,3 +41,11 @@
   - Pelo fato do Kubernetes e Istio possuirem recursos de Circuit Breaker e Liveness e Readiness probes:
     - Se um container tiver um crash, automaticamente ele será reiniciado ou mesmo recriado
     - Caso um container não aguente determinado tráfego, temos a opção de trabalhar com Circuit Breaker para impedir que ele receba mais requisições enquanto está se "curando"
+- Autenticação:
+  -  Serviço centralizado de identidade opensource: Keycloak
+  -  OpenID Connect
+  -  Customização do tema
+    - Utilização do create-react-app
+  - Compartilhamento de chabe pública com os serviços para verificação de autenticidade dos tokens
+  - Diversos tipos de ACL
+  - Flow de autenticação para frontend e backend
