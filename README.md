@@ -35,3 +35,9 @@
   - Por que não o Apache Kafka ou Amazon SQS, entre outross?
     -  Apache Kafka também poderia ser utilizado nesse caso, por outro lado, decidimos utilizar juntamente com o Kafka Connect apenas para replicação de dados, visto que o Kafka vai muito além das mensagerias
     -  Evitaremos o Lock-In nos cloud providers
+- Resiliência e Self Healing:
+  - Para garantir resiliência caso um ou mais microsserviços fiquem fora do ar, as filas serão essenciais
+  - Caso uma menagem venha em um padrão não esperado para determinado microsserviço, o microsserviço poderá rejeitá-la e automaticamente a mesma poderá ser encaminhada para uma dead-letter queue
+  - Pelo fato do Kubernetes e Istio possuirem recursos de Circuit Breaker e Liveness e Readiness probes:
+    - Se um container tiver um crash, automaticamente ele será reiniciado ou mesmo recriado
+    - Caso um container não aguente determinado tráfego, temos a opção de trabalhar com Circuit Breaker para impedir que ele receba mais requisições enquanto está se "curando"
