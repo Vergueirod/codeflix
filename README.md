@@ -29,3 +29,9 @@
   - Essa duplicação ocorre para deixar o microsserviço mais autônomo e preciso
   - O microsserviço duplicará apenas os dados necessários para seu contexto
   - No caso da Codeflix utilizaremos o Kafka Connect como replicador de dados
+- Mensageria:
+  - Como parte da comunicação entre os microsserviços é assíncrona, um sistema de mensageria é necessário
+  - O RabbitMQ foi escolhido para esse caso
+  - Por que não o Apache Kafka ou Amazon SQS, entre outross?
+    -  Apache Kafka também poderia ser utilizado nesse caso, por outro lado, decidimos utilizar juntamente com o Kafka Connect apenas para replicação de dados, visto que o Kafka vai muito além das mensagerias
+    -  Evitaremos o Lock-In nos cloud providers
