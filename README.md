@@ -60,3 +60,21 @@
 - Autenticação entre Microsserviços com Keycloak
 - Comunicação assíncrona entre os Microsserviços com RabbitMQ
 - Replicação de dados utilizando Apache Kafka e Kafka Connect
+
+### Desenvolvimento e Deploy:
+- Docker é o protagonista do ambiente de desenvolvimento
+  - Permite a rápida criação do ambiente
+  - Garante que os ambientes serão exatamente os mesmos
+  - Facilita a criação de recursos periféricos como banco de dados, RabbitMQ e etc..
+  - Geração de imagens para o ambiente de produção
+-  CI / CD:
+  - Para cada pull request gerada em uma aplicação, iniciaremos o processo de CI
+  - Github Actions
+  - O processo de CI será capaz de:
+    - Subir a aplicação usando Docker
+    - Executar os testes
+    - Utilizar o Sonarqube
+-  No caso de acontecer o "merge" da Pull Request, o processo de CD acontece
+-  Fará a geração da imagem Docker
+-  Realizará o upload da imagem em um container registry
+-  Executará o deploy no Kubernetes
