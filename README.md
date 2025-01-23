@@ -24,3 +24,8 @@
   - Grande parte da comunicação entre os microsservições será assíncrona
   - Cada microsserviço possuirá sua própria base de dados
   - Eventualmente os dados poderão ficar inconsistentes, desd que não haja prejuízo direto ao negócio
+- Duplicação de dados:
+  - Eventualmente um microsserviço poderá persistir dados já existentes em outro microsserviço em seu banco de dados
+  - Essa duplicação ocorre para deixar o microsserviço mais autônomo e preciso
+  - O microsserviço duplicará apenas os dados necessários para seu contexto
+  - No caso da Codeflix utilizaremos o Kafka Connect como replicador de dados
