@@ -49,3 +49,14 @@
   - Compartilhamento de chabe pública com os serviços para verificação de autenticidade dos tokens
   - Diversos tipos de ACL
   - Flow de autenticação para frontend e backend
+ 
+### Microsserviços:
+- Backend Admin do Catálogo de Vídeos
+- Frontend Admin do Catálogo de Vídeos
+- Encoder e Vídeos
+- Backend API do Catálogo
+- Frontend do Catálogo
+- Assinatura do Codeflix pelo cliente
+- Autenticação entre Microsserviços com Keycloak
+- Comunicação assíncrona entre os Microsserviços com RabbitMQ
+- Replicação de dados utilizando Apache Kafka e Kafka Connect
