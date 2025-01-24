@@ -2,6 +2,7 @@ using System.ComponentModel;
 using System;
 using Xunit;
 using DomainEntity = Codeflix.Catalog.Domain.Entity;
+using Codeflix.Catalog.Domain.Exceptions;
 namespace codeflix.Catalog.UnitTests.Entity.Category
 {
     public class CategoryTest
@@ -66,5 +67,23 @@ namespace codeflix.Catalog.UnitTests.Entity.Category
             Assert.True(category.CreatedAt < datetimeAfter);
             Assert.Equal(isActive, category.IsActive);
         }
+
+        [Theory(DisplayName = "")]
+        [Trait("Domain", "Category - Aggregates")]
+        [InlineData("")]
+        [InlineData(null)]
+        [InlineData("    ")]
+
+        public void InstantiateErrorWhenNameIsEmpty(string? name)
+        {
+            Action action = 
+                () => new DomainEntity.Category(name!, "Category Description");
+            var exception = Assert.Throws<EntityValidationException>(action);
+            Assert.Equal("Name should not be empty or null", exception.Message);
+        }
+
+    // Nome deve ter no mínimo 3 caracteres
+    // Nome deve ter no máximo 255 caracteres
+    // Descrião deve ter no máximo 10_000 caracteres
     }
 }

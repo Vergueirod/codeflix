@@ -1,4 +1,7 @@
-﻿namespace Codeflix.Catalog.Domain.Entity
+﻿using System.Net.Http.Headers;
+using Codeflix.Catalog.Domain.Exceptions;
+
+namespace Codeflix.Catalog.Domain.Entity
 {
     public class Category
     {
@@ -9,7 +12,7 @@
         public bool IsActive { get; private set; }
 
         public DateTime CreatedAt { get; private set; }
-            
+
         public Category(string name, string description, bool isActive = true)
         {
             Id = Guid.NewGuid();
@@ -17,6 +20,13 @@
             Description = description;
             IsActive = isActive;
             CreatedAt = DateTime.Now;
+
+            Validate();
         }
-    }
-}
+        public void Validate()
+        {
+            if (String.IsNullOrWhiteSpace(Name))
+                throw new EntityValidationException($"{nameof(Name)} should not be empty or null");
+        }
+
+    } }
