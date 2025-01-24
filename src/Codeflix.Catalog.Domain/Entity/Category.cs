@@ -27,6 +27,8 @@ namespace Codeflix.Catalog.Domain.Entity
         {
             if (String.IsNullOrWhiteSpace(Name))
                 throw new EntityValidationException($"{nameof(Name)} should not be empty or null");
+            if (Description == null)
+                throw new EntityValidationException($"{nameof(Description)} should not be empty or null");
         }
 
     } }

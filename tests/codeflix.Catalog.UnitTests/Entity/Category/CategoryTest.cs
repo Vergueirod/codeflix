@@ -68,7 +68,7 @@ namespace codeflix.Catalog.UnitTests.Entity.Category
             Assert.Equal(isActive, category.IsActive);
         }
 
-        [Theory(DisplayName = "")]
+        [Theory(DisplayName = nameof(InstantiateErrorWhenNameIsEmpty))]
         [Trait("Domain", "Category - Aggregates")]
         [InlineData("")]
         [InlineData(null)]
@@ -82,8 +82,19 @@ namespace codeflix.Catalog.UnitTests.Entity.Category
             Assert.Equal("Name should not be empty or null", exception.Message);
         }
 
-    // Nome deve ter no mínimo 3 caracteres
-    // Nome deve ter no máximo 255 caracteres
-    // Descrião deve ter no máximo 10_000 caracteres
+        [Fact(DisplayName = nameof(InstantiateErrorWhenDescrptionIsNull))]
+        [Trait("Domain", "Category - Aggregates")]
+
+        public void InstantiateErrorWhenDescrptionIsNull()
+        {
+            Action action =
+                () => new DomainEntity.Category("Category Name",null!);
+            var exception = Assert.Throws<EntityValidationException>(action);
+            Assert.Equal("Description should not be empty or null", exception.Message);
+        }
+        // Nome não pode ser null ou vazio
+        // Nome deve ter no mínimo 3 caracteres
+        // Nome deve ter no máximo 255 caracteres
+        // Descrião deve ter no máximo 10_000 caracteres
     }
 }
